@@ -1,10 +1,12 @@
 import { Component } from '@angular/core';
 
+import { Texts } from 'src/sample-data';
+
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  title = 'section-7-card-list-with-directives';
+  texts: string[] = Texts;
 }
