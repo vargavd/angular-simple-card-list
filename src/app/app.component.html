@@ -2,18 +2,37 @@
   <h1>Practising Custom Directives</h1>
   <hr />
   <div class="row pb-5">
-    <div class="col-3 mt-4" *ngFor="let text of texts; index as i">
-      <div class="card" appCardHoverEffets>
+    <div class="col-3 mt-4" *ngFor="let cardInfo of cardInfos; index as i">
+      <div
+        class="card"
+        appCardHoverEffets
+        [mouseOverDeleteButton]="cardInfo.mouseIsOverDelete"
+        [mouseOverAddButton]="cardInfo.mouseIsOverAdd"
+      >
         <img src="../assets/imgs/card-bc.png" class="card-img-top" alt="" />
         <div class="card-body">
           <h5 class="card-title">Card title {{ i + 1 }}</h5>
           <p class="card-text">
-            {{ text }}
+            {{ cardInfo.text }}
           </p>
           <div class="d-flex justify-content-between align-items-center">
-            <a href="#" class="btn btn-outline-danger delete-button">Delete</a>
+            <a
+              href="#"
+              class="btn btn-outline-danger delete-button"
+              (mouseenter)="mouseenterDeleteButton(i)"
+              (mouseleave)="mouseleaveDeleteButton(i)"
+            >
+              Delete
+            </a>
 
-            <a href="#" class="btn btn-outline-primary add-button">Add</a>
+            <a
+              href="#"
+              class="btn btn-outline-primary add-button"
+              (mouseenter)="mouseenterAddButton(i)"
+              (mouseleave)="mouseleaveAddButton(i)"
+            >
+              Add
+            </a>
           </div>
         </div>
       </div>
